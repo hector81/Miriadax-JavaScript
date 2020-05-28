@@ -1,0 +1,5 @@
+Para ejecutar este ejercicio primero hay que ejecutar en CMD la siguiente instrucción : "node index.js" y luego para probar la respuesta en html del servidor hay que poner en tu navegador la siguiente dirección : 127.0.0.1:8080/index.html  , que sería la de tu propio localhost.
+
+En está página hay información por si quereis echa un vistazo : https://www.tutorialesprogramacionya.com/javascriptya/nodejsya/detalleconcepto.php?punto=7&codigo=7&inicio=0
+
+Los archivos deben estar colocados en C:\User\user
