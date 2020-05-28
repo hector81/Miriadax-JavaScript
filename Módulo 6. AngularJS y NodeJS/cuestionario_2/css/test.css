@@ -1,0 +1,152 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: black;
+	margin: 0.25em auto;
+	color: black;
+	font-size: 1em;
+	font: 1em Comic sans MS,sans-serif;
+}
+/* TITULO */
+div#titulo_presentacion {
+	margin: 0.5em auto;
+	max-width: 40em; /* ancho maximo */
+    padding:0.25em;
+	background-color: white;
+}
+
+div#titulo_presentacion h1 {
+	border-radius: 0.5em;
+	border: 1px solid black;
+	max-width: 35em;
+	padding:0.25em;
+	margin: 0.5em;
+	background-color: yellow;
+	text-align:center;
+}
+
+div#titulo_presentacion p {
+	padding:0.25em;
+	margin: 0.5em;
+}
+
+/* TEST . PREGUNTAS, RESPUESTAS*/
+div#test {
+  margin: 0.5em auto;
+  max-width: 40em; /* ancho maximo */
+  padding:0.25em;
+  background-color: white;
+}
+
+div.question {
+    margin: 1em;
+	padding:1.5em;
+}
+
+div.question p {
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid black;
+    background-color: #DCDCDC;
+}
+
+
+/* esto es para la etiqueta <p class="status-{{question.status}}">..... */
+
+div.question p.status-ok {
+    background: url('../images/ok.png') no-repeat 3px #d7fbe6;
+    border: 1px solid black;
+    -moz-animation-name: show-ok;
+    -moz-animation-duration: 2s;
+    -webkit-animation-name: show-ok;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+div.question p.status-error {
+    background: url('../images/error.png') no-repeat 3px #fbdad6;
+    border: 1px solid black;
+    -moz-animation-name: show-error;
+    -moz-animation-duration: 2s;
+    -webkit-animation-name: show-error;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-moz-keyframes show-ok {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes show-ok {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-moz-keyframes show-error {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes show-error {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+}
+
+
+/* FINAL */
+.cara_triste {
+    background: no-repeat;
+    height: 10em;
+    background-size: contain;
+    background-image: url('../images/cara_triste.gif');
+}
+
+.cara_alegre {
+    background: no-repeat;
+    height: 10em;
+    background-size: contain;
+    background-image: url('../images/cara_alegre.gif');
+}
+
+.cara_normal {
+    background: no-repeat;
+    height: 7em;
+    background-size: contain; 
+    background-image: url('../images/cara_normal.gif');
+}
+
+div.userstatus {
+	margin: 0.5em auto;
+	max-width: 40em; /* ancho maximo */
+    padding:0.25em;
+	background-color: white;
+    font-size: 2em;
+    height: 14em;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+	<head>
+		<title>Cuestionario con AngularJS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/test.css">
+		<script src="js/script.js"></script>
+		<script src="js/angular.js"></script>
+		<!--<script src="js/angular-ui.js"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	</head>
+<body>
+	<div id="titulo_presentacion">
+		<h1>Ejemplo de cuestionario utilizando AngularJS</h1>
+		<p>Cree una aplicación con Angular que saque un examen con
+		preguntas y respuestas tipo test por pantalla, compruebe el
+		resultado en tiempo real según se vayan respondiendo y cambie
+		una imagen o el estilo cuando la respuesta (o las mayorías de las
+		respuestas) son correctas.</p>
+	</div>
+	<div id="test" ng-app="myApp" ng-controller="TestController">
+		<div class="questions">
+			<div class="question" ng-repeat="question in questions">
+				<p class="status-{{question.status}}">{{question.text}}</p>
+				<div class="answers" ng-repeat="answer in question.answers">
+					<input type="radio" ng-model="question.useranswer" value="{{answer.id}}" name="question-{{question.id}}" id="answer-{{question.id}}-{{answer.id}}" ng-change="validate(question)"/>		
+					<label for="answer-{{question.id}}-{{answer.id}}">{{answer.text}}</label>
+				</div>
+			</div>
+		</div>
+		<div class="userstatus">
+			<span>Has acertado {{validanswers}} de {{questions.length}}</span>
+			<div class="{{userstatus}}">
+				
+			</div>
+		</div>
+	</div>
+
+	<script src="js/miAplicacion.js"></script>
+	<script src="js/miControlador.js"></script>
+	
+</body>
+</html>
