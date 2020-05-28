@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+	<head>
+		<title>Nuestra primera aplicación de filtrado con Angular</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<script src="js/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+	</head>
+<body>
+	<div id="titulo_presentacion">
+		<h1>Nuestra primera aplicación de filtrado con AngularJS</h1>
+		<p>Realizar una aplicación que muestre por pantalla, mediante directivas de Angular, la siguiente imagen.</p>
+		<img src="images/imagen.png">
+		<p>Debemos ser capaces de filtrar estos datos mediante el input superior.</p>
+		<p>Aparte, los datos serán guardados en un array de objetos JSON óptimo para dicha funcionalidad.</p>
+	</div>
+	
+	<div id="filtro" ng-app="myApp" ng-controller="controlador_filtrar_contenido">
+        <p>I have {{listaAmigos.length}} friends. They are: <input type="text" placeholder="filter friends..." ng-model="filtro"></p><br>
+        <ul>
+            <li ng-repeat="amigo in listaAmigos | filter:filtro"> <!-- ng-repeat actua como un bucle -->
+                <strong>[{{amigo.id}}] {{amigo.nombre}} </strong> who is {{amigo.edad}} years old. 
+            </li>
+        </ul>	
+	</div>
+	
+	<script src="js/miAplicacion.js"></script>
+	<script src="js/miControlador.js"></script>
+	
+</body>
+</html>
