@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Onclick</title>
+		<script type="text/javascript">
+			function pon_coche_elegido() {
+			  var coche = document.getElementById("coches").value;
+			  document.getElementById("coche_elegido").innerHTML = "Coche elegido: " + coche;
+			  alert("Has elegido al hacer click este coche : " + coche)
+			}
+			
+			function confirma_coche_elegido() {
+			  var coche = document.getElementById("coche_elegido").innerHTML;
+			  if(coche == ""){
+				alert("No has elegido ninguno ")
+			  }else{
+				alert("Has confirmado que has elegido al hacer click este coche : " + coche)
+			  }
+			}
+		</script>
+	</head>
+	<body>
+		<p>Elige coche.</p>
+
+		<select id="coches" onchange="pon_coche_elegido()">
+		  <option value="Audi">Audi</option>
+		  <option value="BMW">BMW</option>
+		  <option value="Mercedes">Mercedes</option>
+		  <option value="Volvo">Volvo</option>
+		</select>
+
+		<p id="coche_elegido"></p>
+		<button onclick="confirma_coche_elegido()">Confirma coche</button>
+	</body>
+</html>

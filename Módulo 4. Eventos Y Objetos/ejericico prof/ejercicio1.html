@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="parrafos">
+        <p>párrafo uno</p>
+        <p>párrafo dos</p>
+        <p>párrafo tres</p>
+        <p>párrafo cuatro</p>
+    </div>
+    <div><input type="button" onclick="countP();" value="Contar las etiquetas <p>"></div>
+    <div><input type="button" onclick="addP();" name="" id="" value="Pulsa para añadir un <p>"></div>
+    
+    <script>
+        
+        var xPes = document.body.getElementsByTagName('p').length
+        
+        function addP(){
+            let newP = document.createElement('p');
+            let numP = document.body.getElementsByTagName('p').length;
+            xPes = xPes+1
+            newP.textContent = 'parrafo ' + xPes
+
+            let app = document.querySelector('#parrafos');
+            app.appendChild(newP);
+        }
+
+        function countP(){            
+            for(let x = 1; x <= xPes; x++) {
+                alert('<p>'+x+'</p>');
+            }
+        }
+
+    </script>
+
+</body>
+</html>

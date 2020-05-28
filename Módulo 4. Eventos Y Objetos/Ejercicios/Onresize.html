@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Onresize</title>
+		<script type="text/javascript">
+			var x = 0;
+			function myFunction() {
+			  var txt = x += 1;
+			  document.getElementById("demo").innerHTML = txt;
+			}
+						
+		</script>
+	</head>
+	<body onresize="myFunction()">
+		<p>This example demonstrates how to assign an "onresize" event to a body element.</p>
+
+		<p>Try to resize the browser window.</p>
+
+		<p>Window resized <span id="demo">0</span> times.</p>
+	</body>
+</html>

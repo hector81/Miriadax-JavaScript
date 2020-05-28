@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Página llamando a XML</title>
+		<style>
+			table#respuestaXML {
+				width: 20em;
+				height: 5em;
+				border: 1px solid red;
+				background-color: #F0F8FF;
+			}
+		</style>
+		<script type="text/javascript">
+			// Funcion Enviar petición AJAX para respuesta archivo XML
+			function enviar_peticion_AJAX_archivo_XML(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				}
+				else{// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				xmlhttp.onreadystatechange=function(){
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						//almacenamos el fichero XML en la variable contenido
+						var contenido = xmlhttp.responseXML;
+						//recorremos el fichero XML mediante DOM
+						//guarda el dato xml saludo			  
+						var saludo = contenido.getElementsByTagName("saludo")[0];
+						document.getElementById("respuestaXML").innerHTML = "<tr><th>" + saludo.textContent + "</th></tr>";
+					}
+				}
+				
+				xmlhttp.open("GET","ejemploXML.xml",true);
+				xmlhttp.send();
+			}
+
+		</script>
+	</head>
+	<body>		
+		<h1>Haz una llamado AJAX al archivo XML</h1>
+		</br>
+		</br>
+		<button type="button" onclick="enviar_peticion_AJAX_archivo_XML()">Enviar petición AJAX para respuesta archivo XML</button>
+		</br>
+		</br>
+		<table id="respuestaXML"></table>
+	</body>
+</html>

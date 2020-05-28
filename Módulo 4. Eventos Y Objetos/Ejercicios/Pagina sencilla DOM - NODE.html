@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Página sencilla varios parrafos</title>
+		<script type="text/javascript">
+			// Parte 1 - Obtener la lista de elementos de etiqueta <p> y mostrarlos en un alert de JavaScript.
+			function obtenerListaElementosP() {
+				var parrafos = document.getElementsByTagName("P"); // parrafos sería un object HTMLCollection
+				totalParrafos = "Estos son los parrafos del body = \n"
+				for(var i = 0; i < parrafos.length; i++ ){
+					totalParrafos += parrafos.item(i).innerHTML + "\n"
+				}
+				alert(totalParrafos)
+			}
+			// Parte 2 - Añadir un nuevo elemento <p> con el texto “Texto del nuevo párrafo” y que sea hijo del body.
+			function agregarNuevoElementoP() {
+				// Capturamos el body
+				var cuerpo = document.getElementsByTagName("body")[0];
+				// Creamos el nuevo párrafo y un salto de linea
+				var nuevo_parrafo = document.createElement('p').appendChild(document.createTextNode('Texto del nuevo párrafo.'));
+				var salto_linea = document.createElement('br')
+				// Y ahora lo insertamos
+				cuerpo.appendChild(nuevo_parrafo);
+				cuerpo.appendChild(salto_linea);
+			}
+		
+		</script>
+	</head>
+	<body>		
+		<button onclick="obtenerListaElementosP()">Obtener la lista de elementos de etiqueta p y mostrarlos en un alert de JavaScript</button>
+		<br>
+		<br>
+		<button onclick="agregarNuevoElementoP()">Añadir un nuevo elemento p con el texto “Texto del nuevo párrafo” y que sea hijo del body.</button>
+		<br>
+		<br>
+		<p>Este es el parrafo 1</p>
+		<p>Este es el parrafo 2</p>
+		<p>Este es el parrafo 3</p>
+		<p>Este es el parrafo 4</p>
+		<p>Este es el parrafo 5</p>	
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Funciones cadena texto</title>
+		<script type="text/javascript">
+			var palabra = "Murcielago" 
+
+			document.write("La palabra " + palabra + " tiene " + palabra.length + " elementos" + "<br>");
+			document.write("La palabra " + palabra.toUpperCase() + " en mayusuculas" + "<br>");
+			document.write("La palabra " + palabra.toLowerCase() + " en minusculas" + "<br>");
+			document.write("La posicion 5 de la palabra " + palabra + " contiene " + palabra.charAt(5) + "<br>");
+			document.write("La posicion de la letra R en la " + palabra + " está en la posicion " + palabra.indexOf('r') + "<br>");
+			document.write("La ultima posicion de la letra E en la " + palabra + " está en la posicion " + palabra.lastIndexOf('e') + "<br>")
+			document.write("Desde la posicion 3 a la 8 de la " + palabra + " resulta igual a " + palabra.substring(3,8) + "<br>")
+			
+			var frase = "El murcielago vuela de noche"
+			var arrayFrase = frase.split(" ")
+			document.write("La frase " + frase + " contiene estas palabras = " + "<br>")
+			for(palabra in arrayFrase){
+				document.write(arrayFrase[palabra] + "<br>")
+			}
+		</script>
+	</head>
+	<body>
+		<p></p>		
+	</body>
+</html>

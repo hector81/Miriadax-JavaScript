@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificando el DOM</title>
+    <style>
+        .parrafos{
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        p{
+            background-color: #fabada;
+            display: block;
+            height: 200px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        .container__btn{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            width: 100%;  
+        }
+
+        .btn{
+            background-color: rgb(39, 51, 223);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 100%;
+            font-weight: bold;
+            margin: 1rem;
+            padding: 1rem;  
+        }
+    </style>
+</head>
+<body>
+    <div class="parrafos" id="boxes">
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="container__btn">
+    <button class="btn" onclick="count()">Contar</button>
+    <button class="btn" onclick="add()">Añadir</button>
+    </div>
+    <script>
+        
+    let numP = document.body.getElementsByTagName('p');
+    
+    // Función contar elementos
+       let count = () => {
+           for(let i=0; i<= numP.length; i++){
+            allP = numP.length
+           };
+           alert(`El número de cajas es: ${allP}`)
+        };
+
+    // Función añadir elemento 
+        let add = () =>{
+            let pAdd = document.createElement('p');
+            let btnAdd = document.querySelector ('#boxes');
+            btnAdd.appendChild(pAdd);
+        };
+    </script>
+  
+</body>
+</html>
+
+

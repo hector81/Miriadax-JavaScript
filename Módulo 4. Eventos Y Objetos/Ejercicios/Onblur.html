@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Onblur</title>
+		<script type="text/javascript">
+			function convertir_text_caja_mayuscula() {
+			  var x = document.getElementById("fname");
+			  x.value = x.value.toUpperCase();
+			}
+		</script>
+	</head>
+	<body>
+		Enter your name: <input type="text" id="fname" onblur="convertir_text_caja_mayuscula()">
+
+		<p>Cuando abandona el campo de entrada, se activa una función que transforma el texto de entrada en mayúsculas.</p>		
+	</body>
+</html>

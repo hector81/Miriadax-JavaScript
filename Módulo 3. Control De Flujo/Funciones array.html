@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Funciones array</title>
+		<script type="text/javascript">
+			var v = ["a", "e", "i", "o", "u"];
+			var num = v.length; // num = 5
+			document.write("Array " + v + "<br>")
+			document.write("Tamaño array " + num + "<br>")
+			
+			document.write("<br>")
+			
+			var a1 = [1, 2, 3];
+			document.write("Array " + a1 + "<br>")
+			a2 = a1.concat(4, 5, 6); // a2 = [1, 2, 3, 4, 5, 6]
+			document.write("Le concatenamos  concat(4, 5, 6) y resulta en " + a2 + "<br>")
+			a3 = a1.concat([4, 5, 6]); // a3 = [1, 2, 3, 4, 5, 6]
+			document.write("Le concatenamos  concat([4, 5, 6]) y resulta en " + a3 + "<br>")
+			
+			document.write("<br>")
+			
+			var a = ["hola", "mundo"];
+			document.write("Array " + a + "<br>")
+			var men = a.join(""); // men = “holamundo”
+			document.write("Hacemos join('') y resulta en = " + men + "<br>")
+			men = a.join(" "); // men = “hola mundo”
+			document.write("Hacemos join(' '); y resulta en = " + men + "<br>")
+			
+			document.write("<br>")
+			
+			var a123 = [1, 2, 3];
+			document.write("Array " + a123 + "<br>")
+			var u = a123.pop(); // ahora a = [1, 2], u = 3
+			document.write("Hacemos pop() y resulta en = " + a123 + "<br>")
+			document.write("Porque hemos eliminado el ultimo elemento = " + u + "<br>")
+			
+			document.write("<br>")
+			
+			var a1234 = [1, 2, 3];
+			document.write("Array " + a1234 + "<br>")
+			a1234.push(4); // ahora a = [1, 2, 3, 4]
+			document.write("Agregamos elementos con push(4) y queda en = " + a1234 + "<br>")
+			
+			document.write("<br>")
+			
+			var a12345 = [1, 2, 3];
+			document.write("Array " + a12345 + "<br>")
+			var p = a12345.shift(); // ahora a = [2, 3], p = 1
+			document.write("Hacemos shift() y suprimiendo el primer elemento y resulta en = " + a12345 + "<br>")
+			document.write("Porque hemos eliminado el primer elemento = " + p + "<br>")
+			
+			document.write("<br>")
+			
+			var a123456 = [1, 2, 3];
+			document.write("Array " + a123456 + "<br>")
+			a123456.unshift(0); // ahora a = [0, 1, 2, 3]
+			document.write("Hacemos unshift(0) y podemos añadir un elementos = " + a123456 + "<br>")
+			a123456.unshift(4,5); // ahora a = [4,5,0,1,2,3]
+			document.write("Hacemos unshift(4,5) y podemos añadir varios elementos = " + a123456 + "<br>")
+			
+			document.write("<br>")
+			
+			var a1234567 = [1, 2, 3];
+			document.write("Array " + a1234567 + "<br>")
+			a1234567.reverse(); // ahora a = [3, 2, 1]
+			document.write("Hacemos reverse() y lo ponemos del reves = " + a1234567 + "<br>")
+
+			
+		</script>
+	</head>
+	<body>
+		<p></p>		
+	</body>
+</html>

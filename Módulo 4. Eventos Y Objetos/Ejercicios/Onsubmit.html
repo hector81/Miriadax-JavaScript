@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Onsubmit</title>
+		<script type="text/javascript">
+			function myFunction() {
+			  alert("The form was submitted");
+			}
+						
+		</script>
+	</head>
+	<body>		
+		<p>When you submit the form, a function is triggered which alerts some text.</p>
+
+		<form action="/action_page.php" onsubmit="myFunction()">
+		  Enter name: <input type="text" name="fname">
+		  <input type="submit" value="Submit">
+		</form>
+	</body>
+</html>

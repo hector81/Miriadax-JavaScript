@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+	<title>Transformaciones con JSON</title>
+	<style>
+
+	</style>
+	<script type="text/javascript">
+		var datosJSON;
+		datosJSON = devolver_archivo_JSON_con_peticion_AJAX()
+		
+		// Funcion devolver archivo JSON con petición AJAX 
+		function devolver_archivo_JSON_con_peticion_AJAX(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+				peticion_http = new XMLHttpRequest(); //El objeto XMLHttpRequest permite la recepción de respuestas del servidor en formato JSON.
+			}
+			else{// code for IE6, IE5
+				peticion_http = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			peticion_http.onreadystatechange=function(){
+				if (peticion_http.readyState == 4 && peticion_http.status == 200){
+					//almacenamos el fichero de texto recibido en la variable contenido
+					var contenido = peticion_http.responseText;
+					//convertimos la respuesta a un objeto JSON para acceder a él
+					//var datosJSON = eval("("+this.contenido+")");
+					datosJSON = JSON.parse(contenido);
+					return datosJSON;
+				}
+			}
+			
+			peticion_http.open("GET","PhoneBook.json",true); //Realizar la petición al servidor
+			//Llamamos al método setRequestHeader indicando que los datos a enviarse están codificados como un formulario.
+			peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			peticion_http.send();
+		}
+		
+		//funcion objeto json a string 
+		function transformar_ObjetoJSON_a_String(){
+			string_json = JSON.stringify(datosJSON); //de objeto json a string     
+			console.log(string_json);//consola
+		}
+		
+		//funcion string a objeto json
+		function transformar_String_a_ObjetoJSON(){
+			objeto_json = JSON.parse(string_json);   //de string a objeto json 
+			console.log(objeto_json);//consola
+		}
+	
+	
+	</script>
+	
+</head>
+<body>
+	<h1>Transformaciones con JSON</h1>
+	</br>
+	<p>Douglas Crawford nos dio la posibilidad de transformar un fichero JSON a String y viceversa.</p>
+	<p>Use las funciones que este genio implementó con un objeto JSON
+	que contenga al menos otro objeto y un array de objetos como
+	propiedades. Muestre por consola el resultado de transformarlo a
+	String y vuelva a transformar ese String a objeto comprobando que
+	mantiene todas sus propiedades</p>
+	</br><br>
+	<button onclick="transformar_ObjetoJSON_a_String()">Transformar objeto JSON a String</button>
+	<br><br>
+	<button onclick="transformar_String_a_ObjetoJSON()">Transformar a String anterior a objeto JSON</button>
+	<br><br>
+</body>
+</html>

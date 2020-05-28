@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Funciones utiles para numeros</title>
+		<script type="text/javascript">
+			var num1 = 0; var num2 = 0;
+			//alert(num1/num2); // muestra el valor NaN
+			document.write("El valor 1 es " + num1 +  " y el valor 2 es " + num2 +  "<br>")
+			document.write("Como son cero los 2 el resultado de numero1/numero2 es " + (num1/num2) + " que muestra el valor NaN<br>")
+			document.write("<br>")
+			
+			
+			var num11 = 0; var num22 = 0;
+			document.write("El valor 1 es " + num11 +  " y el valor 2 es " + num22 +  "<br>")
+			if(isNaN(num11/num22)){
+				document.write("El valor no se puede dividir por cero<br>")
+			}else{
+				document.write(num11/num22)
+			}
+			
+			var num111 = 10; var num222 = 3;
+			document.write("El valor 1 es " + num111 +  " y el valor 2 es " + num222 +  "<br>")
+			if(isNaN(num111/num222)){
+				document.write("El valor no se puede dividir por cero<br>")
+			}else{
+				document.write(num111/num222)
+			}
+
+
+			var num1 = 10; var num2 = 0;
+			alert(num1/num2); // valor Infinity
+			
+			var num1 = 4564.34567;
+			num1.toFixed(2); // 4564.35
+			num1.toFixed(6); // 4564.345670
+			num1.toFixed(); // 4564
+			
+		</script>
+	</head>
+	<body>
+		<p></p>		
+	</body>
+</html>

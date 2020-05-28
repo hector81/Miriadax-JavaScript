@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Cambio de estilos de elementos con eventos de JQuery</title>
+		<style type="text/css">
+			form {
+				border: 1px solid black;
+				padding:10px;
+				width: 15em;
+			}
+		</style>
+		<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// aplicara la funcion focus sobre el selector input#tomar_foco
+				$("input#tomar_foco").focus(function(){
+					$("input#tomar_foco").css("color", "red");
+				});
+				// aplicara la funcion blur sobre el selector input#perder_foco
+				$("input#perder_foco").blur(function(){
+					$("input#perder_foco").css("color", "red");
+				});			
+			});
+		</script>
+	</head>
+<body>
+	<h1>Cambio de estilos de elementos con eventos de JQuery</h1>
+	<p>Construir un HTML con dos input que implementen los eventos
+	de “tomar foco” y “perder foco” cuya funcionalidad sería cambiar
+	el estilo del texto de dichos elementos a un color rojo.</p>
+	<br><br>
+	<form>
+		Si toma foco el texto el estilo del texto será rojo <input type="text" id="tomar_foco">
+		<br><br>
+		Si pierde el foco el texto el estilo del texto será rojo  <input type="text" id="perder_foco">
+	<form>
+</body>
+</html>
