@@ -1,0 +1,109 @@
+body {
+    color: #333;
+    font: 14px Comic sans MS,sans-serif;
+    padding: 20px;
+    margin: 20px;
+    position: center;
+}
+
+
+div.userstatus {
+    font-size: 2em;
+    height: 175px;
+}
+
+.reprobado {
+    background: no-repeat;
+    height: 100px;
+    background-size: contain;
+    background-image: url('../images/cara_triste.gif');
+}
+
+.excelente {
+    background: no-repeat;
+    height: 100px;
+    background-size: contain;
+    background-image: url('../images/cara_alegre.gif');
+}
+
+.minimo {
+    background: no-repeat;
+    height: 100px;
+    background-size: contain; 
+    background-image: url('../images/cara_normal.gif');
+}
+
+div.question {
+    margin: 0 0 30px 0;
+}
+
+div.question p {
+    margin: 15px 0 5px 0;
+    padding: 10px 5px 10px 25px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+}
+
+div.question p.status-ok {
+    background: url('../images/ok.png') no-repeat 3px #d7fbe6;
+    border: 1px solid green;
+    -moz-animation-name: show-ok;
+    -moz-animation-duration: 2s;
+    -webkit-animation-name: show-ok;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+div.question p.status-error {
+    background: url('../images/error.png') no-repeat 3px #fbdad6;
+    border: 1px solid red;
+    -moz-animation-name: show-error;
+    -moz-animation-duration: 2s;
+    -webkit-animation-name: show-error;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+
+@-moz-keyframes show-ok {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes show-ok {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-moz-keyframes show-error {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+@-webkit-keyframes show-error {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
+
+}
