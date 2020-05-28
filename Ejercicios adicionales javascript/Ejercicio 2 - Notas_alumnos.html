@@ -1,0 +1,367 @@
+﻿<!--
+2. Cada vez que se pulsa el botón "Leer nota", se solicita la introducción de una nota mediante la función prompt() de JavaScript. La nota será guardada. 
+El botón "Mostrar aprobados" nos muestra el total de aprobados registrados, mientras que "Mostrar media" nos saca la nota media de las hasta ahora registradas.
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Notas de alumnos</title>
+		<style>
+			.botones {
+				float: left;
+				margin-right: 2em;
+			}
+			
+			.boton {
+				border-radius: 20px;
+				background-color: #00BFFF;
+				color: white;
+				padding: 1em;
+				font-size: 1em;
+				font-weight: bold;
+			}
+			
+			.datosAlumnos {
+				width: 40%;
+				float: left;
+				margin-right: 2em;
+			}
+			
+			#datos {
+				border-radius: 20px;
+				background-color: lightyellow;
+				color: red;
+				padding: 1em;
+				font-size: 1em;
+				font-weight: bold;
+				margin-top: 2em;
+				height: auto;
+				border: 1px solid black;
+				overflow: scroll;
+			}
+			
+			.datosAlumnos_aprobados_suspensos {
+				width: 25%;
+				float: left;
+				margin-right: 2em;
+			}
+			
+			#aprobados_suspensos {
+				border-radius: 20px;
+				background-color: lightyellow;
+				color: red;
+				padding: 1em;
+				font-size: 1em;
+				font-weight: bold;
+				margin-top: 2em;
+				height: auto;
+				border: 1px solid black;
+				overflow: hidden;
+			}
+			
+			.datosAlumnos_media_notas {
+				width: 20%;
+				float: left;
+				margin-right: 2em;
+			}
+			
+			#media_notas {
+				border-radius: 20px;
+				background-color: lightyellow;
+				color: red;
+				padding: 1em;
+				font-size: 1em;
+				font-weight: bold;
+				margin-top: 2em;
+				height: auto;
+				border: 1px solid black;
+				overflow: hidden;
+			}
+
+			.limpiar {
+				clear: both;
+			}
+
+		</style>
+		<script type="text/javascript">
+			//variable global JSON
+			var arrayNotasJson = {
+				"dni" : [],
+				"nombre" : [],
+				"nota" : []
+			};
+			
+			//funcion devolver numero dni con letra
+			function devolverNumeroDni_con_Letra(dni) {
+				var dni_letra = "";
+				var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+				var letraCalculada = letras[dni % 23];
+				dni_letra = dni + letraCalculada;
+				return dni_letra;
+			}//fin funcion
+			
+			//funcion comprobarNumerosDni para comprobar que todos los números del DNI son números y no letras
+			function comprobarNumerosDni(dni){
+				var comprobar = false;
+				for(var i = 0; i < dni.length; i++){
+					if(isNaN(dni[i])) {//si la posicion no es numero
+						comprobar = true;
+					 }
+				}
+				return comprobar;
+			}//fin funcion
+			
+			//funcion para comprobar que el dni no este repetido
+			function comprobar_dni_repetido(dni){
+				var comprobar = false;
+				for (var i=0; i< arrayNotasJson.dni.length; i++){
+					if(arrayNotasJson.dni[i] == dni){
+						comprobar = true;
+					}
+				}
+				return comprobar;
+			}//fin funcion
+			
+			//funcion para devolver los datos del alumno introducido
+			function devolver_datos_alumno_introducido(modificar){
+				var nota = 0;
+				var dni = "";
+				var nombre = ""
+				var datos_alumno_introducido = [];
+				//Metemos nombre.Comprobamos que este lleno
+				var nombreCorrecto = false;
+				do{
+					nombre = prompt("Introduce el nombre del alumno");
+					if(nombre != "" & nombre != null){
+						alert("El nombre del alumno es " + nombre);
+						nombreCorrecto = true;
+					}else{
+						alert("Debes meter un nombre, no puedes dejarlo vacio");
+					}
+				}while(nombreCorrecto == false);
+				//Metemos dni.Comprobamos que este lleno
+				var dniCorrecto = false;
+				do{
+					dni = prompt("Introduce el número de DNI del alumno. Solo pon 8 números, la letra la calcularemos nosotros.");
+					if(dni != "" & dni != null){
+						if(dni.length != 8){
+							alert("El número del DNI solo puede tener 8 números");
+						}else{
+							if(comprobarNumerosDni(dni) == false){
+								dni = devolverNumeroDni_con_Letra(dni);
+								//comprobamos mediante la variable modificar que se trata de una modificacion o no, para tener en cuenta o no el dni repetido
+								if(modificar){//si modificar es true entonces se esta modificando y puede haber un dni repetido
+									alert("El dni del alumno es " + dni);
+									dniCorrecto = true;
+								}else{//se trata de insertar datos y entonces hay que tener en cuenta el dni repetido
+									if(!comprobar_dni_repetido(dni)){
+										alert("El dni del alumno es " + dni);
+										dniCorrecto = true;
+									}else{
+										alert("Ya hay un alumno que tiene el mismo DNI");
+									}
+								}						
+							}else{
+								alert("El número del DNI contiene alguna letra en vez de número");
+							}	
+						}
+					}else{
+						alert("Debes meter un dni, no puedes dejarlo vacio");
+					}
+				}while(dniCorrecto == false);
+				//Metemos numeros ,comprobar que el prompt sea un numero
+				var numeroInt = false;
+				do{
+					nota = parseFloat(prompt("Introduce la nota"));
+					if(!Number.isNaN(Number.parseFloat(nota))){
+						if(nota >= 0 & nota <= 10){
+							alert("La nota introducida es " + nota);
+							numeroInt = true;
+						}else{
+							alert("Debes meter un número que sea entre 0 y 10");
+						}
+					}else{
+						alert("Debes meter un número.");
+					}
+				}while(numeroInt == false);
+				
+				datos_alumno_introducido = [dni, nombre, nota];
+				return datos_alumno_introducido;
+			}//fin funcion
+			
+			//funcion leerNota
+			function leerNota(){
+				var modificar = false;//esto es para decir a la funcion que no queremos modificar y que tenga en cuenta que el dni este repetido si es el mismo
+				datos_alumno_introducido = devolver_datos_alumno_introducido(modificar);
+				var nota = datos_alumno_introducido[2];
+				var dni = datos_alumno_introducido[0];
+				var nombre = datos_alumno_introducido[1];
+
+				//si todo esta correcto, lo metemos en el JSON
+				arrayNotasJson['dni'].push(dni);
+				arrayNotasJson['nombre'].push(nombre);
+				arrayNotasJson['nota'].push(nota);
+				//lanzamos un alert 
+				alert("Datos introducidos: Nombre: " + nombre + " ,DNI: " + dni + " ,Nota: " + nota)
+				//lo ponemos en el div de datos
+				escribirDatos(arrayNotasJson);
+				//ponemos en div de aprobados y suspensos los datos
+				mostrarAprobados_div();
+				//ponemos en div la media de las notas
+				mostrarMedia_div();
+			}//fin funcion
+			
+			//funcion devolver_Aprobados_Suspensos
+			function devolver_Aprobados_Suspensos(){
+				var numeroAprobados = 0;
+				var numeroSuspensos = 0;
+				//recorremos por el nota pero los arrays de tamaño son iguales
+				for (var i=0; i< arrayNotasJson.nota.length; i++){
+					if(arrayNotasJson.nota[i] < 5){
+						numeroSuspensos++;
+					}else{
+						numeroAprobados++;
+					}
+				}
+				var array_Aprobados_Suspensos = [numeroAprobados, numeroSuspensos];
+				return array_Aprobados_Suspensos;
+			}//fin funcion
+			
+			//funcion mostrarAprobados_cuadro_dialogo
+			function mostrarAprobados_cuadro_dialogo(){
+				var array_Aprobados_Suspensos = devolver_Aprobados_Suspensos();
+				alert("El número de suspensos es " + array_Aprobados_Suspensos[1] + " y el número de aprobados es " + array_Aprobados_Suspensos[0]);
+			}//fin funcion
+			
+			//funcion mostrarAprobados_div
+			function mostrarAprobados_div(){
+				var array_Aprobados_Suspensos = devolver_Aprobados_Suspensos();
+				//lo ponemos en blanco
+				document.getElementById("aprobados_suspensos").innerHTML = "";
+				//texto para acumular
+				var texto = ""
+				texto += "<p>Aprobados : <span style='color:black;'>" + array_Aprobados_Suspensos[0] + ".</span>"
+				texto += " Suspensos : <span style='color:black;'>" + array_Aprobados_Suspensos[1] + " </span></p>"
+				//ponemos el texto
+				document.getElementById("aprobados_suspensos").innerHTML = texto;
+			}//fin funcion
+			
+			//funcion devolverMediaNotas
+			function devolverMediaNotas(){
+				var mediaNotas = 0.0;
+				var acumulado = 0;
+				for (var i=0; i< arrayNotasJson.nota.length; i++){
+					acumulado += arrayNotasJson.nota[i];//sumamos notas
+				}
+				var numeroNotas = arrayNotasJson.nota.length;
+				mediaNotas = acumulado/numeroNotas;
+				var decimal_media = mediaNotas.toFixed(2);//pasamos a dos decimales
+				return decimal_media;
+			}//fin funcion
+			
+			//funcion mostrarMedia_cuadro_dialogo
+			function mostrarMedia_cuadro_dialogo(){
+				var mediaNotas = 0.0;
+				var mediaNotas = devolverMediaNotas();
+				alert("La nota media es " + mediaNotas);
+			}//fin funcion
+			
+			//funcion mostrarMedia_div
+			function mostrarMedia_div(){
+				var mediaNotas = 0.0;
+				var mediaNotas = devolverMediaNotas();
+				//texto para acumular
+				var texto = ""
+				//lo ponemos en blanco
+				document.getElementById("media_notas").innerHTML = "";
+				texto = "<p>La nota media es : <span style='color:black;'>" + mediaNotas + " </span></p>"
+				document.getElementById("media_notas").innerHTML = texto;
+			}//fin funcion
+			
+			//funcion escribirDatos
+			function escribirDatos(arrayNotasJson){
+				//lo ponemos en blanco
+				document.getElementById("datos").innerHTML = "";
+				//texto para acumular
+				var texto = ""
+				//recorremos por el nombre pero los arrays de tamaño son iguales
+				for (var i=0; i< arrayNotasJson.nombre.length; i++){
+					texto += "<p><span style='color:black;'>Alumno " + (i+1) + " = </span>";
+					texto += "Nombre : <span style='color:black;'>" + arrayNotasJson.nombre[i] + ".</span>"
+					texto += " DNI : <span style='color:black;'>" + arrayNotasJson.dni[i] + ".</span>"
+					texto += " Nota : <span style='color:black;'>" + arrayNotasJson.nota[i] + "</span>  <button onclick='borrarAlumno(" + i + ")'>Borrar alumno</button>  <button onclick='modificarAlumno(" + i + ")'>Modificar alumno</button></p>"
+				}
+				//ponemos el texto
+				document.getElementById("datos").innerHTML = texto;
+				
+			}//fin funcion
+			
+			//funcion para borrar alumno
+			function borrarAlumno(numero){		
+				var deletedItem1 = arrayNotasJson.dni.splice(numero,1);
+				var deletedItem2 = arrayNotasJson.nombre.splice(numero,1);
+				var deletedItem3 = arrayNotasJson.nota.splice(numero,1);
+				
+				alert("Alumno borrado.");
+				
+				escribirDatos(arrayNotasJson);
+				//ponemos en div de aprobados y suspensos los datos
+				mostrarAprobados_div();
+				//ponemos en div la media de las notas
+				mostrarMedia_div();
+			}//fin funcion
+			
+			//funcion para modificar datos alumno
+			function modificarAlumno(numero){
+				var modificar = true;// esto es para decir a la funcion que queremos modificar y no tenga en cuenta que el dni este repetido si es el mismo
+				datos_alumno_introducido = devolver_datos_alumno_introducido(modificar);
+				var nota = datos_alumno_introducido[2];
+				var dni = datos_alumno_introducido[0];
+				var nombre = datos_alumno_introducido[1];
+
+				arrayNotasJson.nombre[numero] = nombre;
+				arrayNotasJson.dni[numero] = dni;
+				arrayNotasJson.nota[numero] = nota;
+				
+				alert("Alumno modificado.");
+				
+				escribirDatos(arrayNotasJson);
+				//ponemos en div de aprobados y suspensos los datos
+				mostrarAprobados_div();
+				//ponemos en div la media de las notas
+				mostrarMedia_div();
+			}//fin funcion
+		</script>
+	</head>
+	<body>
+		<div class="botones">
+			<button onclick="leerNota()" class="boton">Leer nota</button>
+			<button onclick="mostrarAprobados_cuadro_dialogo()" class="boton">Mostrar aprobados</button>
+			<button onclick="mostrarMedia_cuadro_dialogo()" class="boton">MostrarMedia</button>
+		</div>
+		<div class="limpiar"></div>
+		<br>
+		<div class="datosAlumnos">
+			<h1>Datos de los alumnos</h1>
+			<div id="datos">
+			
+			</div>
+		</div>
+	
+		<div class="datosAlumnos_aprobados_suspensos">
+			<h1>Aprobados y suspensos</h1>
+			<div id="aprobados_suspensos">
+			
+			</div>
+		</div>
+		
+		<div class="datosAlumnos_media_notas">
+			<h1>Media de las notas</h1>
+			<div id="media_notas">
+			
+			</div>
+		</div>	
+	</body>
+</html>

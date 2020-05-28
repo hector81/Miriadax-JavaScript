@@ -1,0 +1,60 @@
+<!-- El funcionamiento es el siguiente: 
+Al pulsar "Processar" se validará el formulario. Los criterios para considerar que los datos son válidos son: Emial debe incluir @ y ., el valor del presupuesto debe ser superior al doble del límite, que es un valor entre 300 y 1000 que se genera de forma aleatoria al cargar la página, y la opción de envío tiene que ser válida (es una lista con los valores expres, normal y 24 h). 
+Si los datos no son válidos, saldrá un mensaje de advertencia, si son válidos, el pedido se guarda en un array como un objeto JSON con las propiedades envio, nombre, email y presupuesto. 
+El botón "Buscar Envio", busca entre los envíos registrados aquel cuyo email coincida con el introducido en el campo email que aparece debajo del botón. Nos muestra el resultado de la búsqueda 
+El botón "Mostrar" nos muestra en un cuadro de diálogo los datos de todos los pedidos registrados
+-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Formulario solicitud de datos</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="estilos.css" rel="stylesheet">
+		<script type="text/javascript" src="funciones.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+
+	<body>
+		<form action="#" name="formulario" id="formulario" method="get" enctype="multipart/form-data" formnovalidate="formnovalidate" value="Enviar con validación">
+			<legend>Solicitud de datos</legend>
+			<br>
+			<label for="nombre">Nombre: </label><br>		
+			<input type="text" class="no-boton" id="nombre" name="nombre" value="" placeholder="Nombre" required="required" autofocus="autofocus" autocomplete="on"/><br><br>
+			
+			<label for="email1">Email: </label><br>
+			<input type="email" class="no-boton" id="email1" name="email1" value="" placeholder="Email" required="required" autofocus="autofocus" autocomplete="on"/>
+			<br><span class="errorMessage" id="error_email"></span><br><br>
+		
+			<label for="limite">Límite: </label><br>
+			<input type="number" class="no-boton" id="limite" name="limite" value="" maxlength="100"disabled/><br><br>
+			
+			<label for="presupuesto">Presupuesto: </label><br>
+			<input type="number" class="no-boton" id="presupuesto" name="presupuesto" value="" placeholder="Presupuesto" maxlength="100" autocomplete="off" />
+			<br><span class="errorMessage" id="error_presupuesto"></span><br><br>
+		
+			<label for="envio">Envío: </label><br>
+			<select id="envio" class="no-boton" name="envio">
+				<option value="" selected>-Elija opción-</option>
+				<option value="express">express</option>
+				<option value="normal">normal</option>
+				<option value="24h">24h</option>
+			</select>
+			<br><span class="errorMessage" id="error_envio"></span><br><br>
+				
+			<!--<input type="submit" class="boton" name="procesar" id="procesar" value="Procesar" />-->
+			<input type="button" value="Procesar" class="boton" name="procesar" id="procesar">
+			&nbsp;&nbsp;
+			<input type="button" value="Buscar envío" class="boton" name="buscar" id="buscar">
+			
+			<label for="email2"></label>
+			<input type="email" class="no-boton" id="email2" name="email2" placeholder="Email"><br><br>
+			
+			<input type="button" value="Mostrar" class="boton" name="mostrar" id="mostrar">
+
+		</form>	
+	</body>
+</html>

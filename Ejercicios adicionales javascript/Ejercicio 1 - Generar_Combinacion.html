@@ -1,0 +1,80 @@
+﻿<!--
+1. Realizar una página que incluirá un botón "Generar combinación". Al pulsarlo, se mostrará en la página una posible combinación de la lotería primitiva (6 números aleatorios diferentes entre 1 y 49, ordenados de menor a mayor)
+-->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="iso-8859-1">
+		<title>Generar combinación loteria primitiva</title>
+		<style>
+			button {
+				border-radius: 1px solid black;
+			}
+			
+			p#primitivaAleatoria {
+				background-color: lightyellow;
+				color: red;
+				width: 12em;
+				height: 4em;
+				padding: 1em;
+				font-size: 2em;
+			}
+		</style>
+		<script type="text/javascript">
+			//funcion para comprobar que no haya repeticiones en el array
+			function comprobarRepetidosArrayNumero(arrayNumerosPrimitiva , numero){
+				var comprobar = false;
+				for (elemento in arrayNumerosPrimitiva) {
+					if(arrayNumerosPrimitiva[elemento] == numero){
+						comprobar = true;	
+					}
+				}
+				return comprobar;				
+			}//fin funcion
+			
+			//funcion para generar numeros aleatorios de primitiva, no repetidos y ordenados
+			function generarCobinacionAleatoria(){
+				var max = 50;
+				var min = 1;
+				var arrayNumerosPrimitiva = [];
+				for(var i = 0; i < 6; i++){
+					var numeroAleatorio = Math.floor(Math.random() * (max - min)) + min;
+					// si es true, esta repetido (restamos posicion) y si no lo esta lo agregamos
+					if(!comprobarRepetidosArrayNumero(arrayNumerosPrimitiva , numeroAleatorio)){
+						arrayNumerosPrimitiva[i] = numeroAleatorio;
+					}else{
+						i--;
+					}
+				}//fin for
+				//ordenamos de menos a mayor
+				arrayNumerosPrimitiva.sort(function(a, b) {
+				  return a - b;
+				});
+				
+				return arrayNumerosPrimitiva;
+			}//fin funcion
+			
+			function imprimirLoteria(){
+				//vaciamos primero el texto anterior por si habia algunos numeros antes
+				document.getElementById("primitivaAleatoria").innerHTML = "";
+				var arrayNumerosPrimitiva = generarCobinacionAleatoria();
+				var texto = "";
+				for (elemento in arrayNumerosPrimitiva) {
+					if(elemento == 5){
+						texto += arrayNumerosPrimitiva[elemento] + "  ";
+					}else{
+						texto += arrayNumerosPrimitiva[elemento] + " - ";
+					}	
+				}
+				//imprimimos
+				document.getElementById("primitivaAleatoria").innerHTML = texto;
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="imprimirLoteria()">Imprimir mis números aleatorios de primitiva</button>
+		<br>		
+		<p id="primitivaAleatoria"></p>		
+	</body>
+</html>

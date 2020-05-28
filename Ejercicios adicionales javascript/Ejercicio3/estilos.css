@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: white;
+	margin: 0.25em auto;
+	color: black;
+	font-family: italic;
+}
+
+form {
+	  margin: 0.5em auto;
+	  max-width: 28em; /* ancho maximo */
+	  padding:0.25em;
+	  background-color: white;
+	  border: 2px solid black;
+	  padding: 1.5em;
+	  border: 1px solid blue;
+}
+
+legend {
+	text-align: left;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+label {
+	font-weight: bold;
+	font-size: 1.15em;
+	text-align: left;
+	margin-top: 1.5em;
+}
+
+.no-boton {
+	margin-top: 0.5em;
+	width: 24em;
+	height: 2em;
+}
+
+.boton {
+	width: auto;
+	height: 2.5em;
+	background-color: #DCDCDC;
+}
+
+span.errorMessage {
+	background-color: #FFE4C4;
+	color: red;
+	font-size: 1.15em;
+	margin-top: 0.5em;
+	width: 24em;
+	height: 2em;
+}
+
