@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div ng-app = "" ng-controller ="miControlador">
+		{{ nombre + " " + apellidos }}
+	</div>
+	<script>
+		function miControlador($scope){
+			$scope.nombre = "Mario";
+			$scope.apellidos = "Flores";
+		}
+	</script>
+	<script src ="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+</body>
+</html>
+
+<!-- Usando un controlador perteneciente a un módulo: -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src ="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	</head>
+<body>
+	<div ng-app ="miAplicacion" ng-controller ="miControlador">
+		{{ nombre + " " + apellidos }}
+	</div>
+	<script>
+		var app = angular.module("miAplicacion" , []);
+		app.controller("miControlador", function($scope){
+			$scope.nombre = "Mario";
+			$scope.apellidos = "Flores";
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Sintaxis ngRepeat (ng-repeat)</title>
+		<style type="text/css">
+
+		</style>
+		<script src="angular-1.7.9/angular.min.js"></script>
+		<script type="text/javascript">
+		
+		</script>
+	</head>
+<body>
+	<div ng-controller="miControlador">
+		<div ng-init="lista =
+			[
+				{nombre:Fer, edad:12},{nombre:Victor, edad:13},
+				{nombre:Eva, edad:14},{nombre:Susana, edad:15},
+				{nombre:Alejo, edad:16} 
+				]
+		"/>
+			<ul>
+				<li ng-repeat="a in lista">{{a.nombre}}: {{a.edad}} años</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

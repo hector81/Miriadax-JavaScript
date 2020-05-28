@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Sintaxis Nuestras_propias_directivas</title>
+		<style type="text/css">
+
+		</style>
+		<script src="angular-1.7.9/angular.min.js"></script>
+		<script type="text/javascript">
+		var app = angular.module('MiModulo',[]);
+		app.controller('MiControlador', function($scope){
+			$scope.cliente = {
+				nombre: 'Jhon',
+				direccion: 'Av. Jose pardo 481'
+			};
+		});
+		//Nuestra directiva
+		app.directive('miCliente', function(){
+			return {
+				template: 'Nombre: {{cliente.nombre}} Dirección: {{cliente.direccion}}'
+			};
+		 });
+		</script>
+	</head>
+<body>
+	<div ng-controller="MiControlador">
+		<div mi-cliente></div>
+	</div>
+</body>
+</html>

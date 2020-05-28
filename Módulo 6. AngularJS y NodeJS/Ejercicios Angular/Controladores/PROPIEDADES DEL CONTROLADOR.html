@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>PROPIEDADES DEL CONTROLADOR</title>
+		<style type="text/css">
+
+		</style>
+		<script src="angular-1.7.9/angular.min.js"></script>
+		<script type="text/javascript">
+			function cocheController($scope) {
+				$scope.coche = {
+					marca: "Audi",
+					modelo: "A3",
+					nombreCompleto: function() {
+						var x;
+						x = $scope.coche;
+						return x.marca + " " + x.modelo;
+					}
+				};
+			}
+		</script>
+	</head>
+<body>
+	<div ng-app="" ng-controller="cocheController">
+		Marca: <input type="text" ng-model="coche.marca"><br>
+		Modelo: <input type="text" ng-model="coche.modelo"><br>
+		El coche es: {{coche.nombreCompleto()}}
+	</div>
+</body>
+</html>

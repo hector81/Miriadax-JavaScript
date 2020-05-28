@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name ="tipo_contenido" content="text/html;" htpp-equiv="content-type" charset="utf-8">
+		<title>Sintaxis ngChange (ng-change)</title>
+		<style type="text/css">
+
+		</style>
+		<script src="angular-1.7.9/angular.min.js"></script>
+		<script type="text/javascript">
+			//en el lado del contolador
+			app.controller('miControlador', function($scope){
+				$scope.total = 0;
+				$scope.favor = function (){$scope.total++;};
+				$scope.contra = function (){$scope.total--;};
+			});
+		</script>
+	</head>
+<body>
+	<div ng-controller="miControlador">
+		<input type="checkbox" ng-model="si" ngchange="favor()"> A favor
+		<input type="checkbox" ng-model="no" ngchange="contra()"> En contra
+		<h3>Total Votos: {{total}}</h3>
+	</div>
+	
+</body>
+</html>
